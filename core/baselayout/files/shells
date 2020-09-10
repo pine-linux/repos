@@ -2,3 +2,4 @@
 # See shells(5) for details.
 
 /bin/sh
+/bin/mksh

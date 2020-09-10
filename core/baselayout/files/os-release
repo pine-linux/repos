@@ -1,8 +1,8 @@
-NAME="KISS Linux"
-PRETTY_NAME="KISS Linux"
-ID=kiss
+NAME="Pine Linux"
+PRETTY_NAME="Pine Linux"
+ID=pine
 BUILD_ID=rolling
-HOME_URL="https://k1ss.org"
-DOCUMENTATION_URL="https://k1ss.org"
-SUPPORT_URL="https://github.com/kisslinux"
-BUG_REPORT_URL="https://github.com/kisslinux"
+HOME_URL="lol no"
+DOCUMENTATION_URL="lol no"
+SUPPORT_URL="https://github.com/pine-linux"
+BUG_REPORT_URL="https://github.com/pine-linux"
