@@ -1,0 +1,7 @@
+#!/bin/sh -e
+
+# Make sbase tar accept arguments without dash
+
+make LDFLAGS="$LDFLAGS -static" sbase-box
+make DESTDIR="$1" PREFIX=/   sbase-box-install
+

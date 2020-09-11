@@ -1,0 +1,13 @@
+#!/bin/sh -e
+
+for patch in *.patch; do
+    patch -p1 < "$patch"
+done
+
+sed -i \
+    -e "/^CFLAGS/s/=/= $CFLAGS -static/" \
+    -e "/^LDFLAGS/s/=/= $LDFLAGS -static/" \
+    config.mk
+
+make ubase-box
+make DESTDIR="$1" PREFIX=/ ubase-box-install
