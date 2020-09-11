@@ -7,7 +7,7 @@ done
 
 install -dm 555  "$1/proc"
 install -dm 555  "$1/sys"
-install -dm 0750 "$1/root"
+install -dm 0750 "$1/home/root"
 install -dm 1777 "$1/tmp"
 
 # Setup /usr hierarchy.
