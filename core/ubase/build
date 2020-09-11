@@ -5,8 +5,8 @@ for patch in *.patch; do
 done
 
 sed -i \
-    -e "/^CFLAGS/s/=/= $CFLAGS -static/" \
-    -e "/^LDFLAGS/s/=/= $LDFLAGS -static/" \
+    -e "/^CFLAGS/s/=/= $CFLAGS/" \
+    -e "/^LDFLAGS/s/=/= $LDFLAGS/" \
     config.mk
 
 make ubase-box

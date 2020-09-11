@@ -1,2 +1,9 @@
 #!/bin/sh -e
 
+sed -i \
+    -e "/^CFLAGS/s/=/= $CFLAGS/" \
+    -e "/^LDFLAGS/s/=/= $LDFLAGS/" \
+    config.mk
+
+make ubase-box
+make DESTDIR="$1" PREFIX=/ ubase-box-install
