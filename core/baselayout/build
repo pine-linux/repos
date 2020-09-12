@@ -13,13 +13,12 @@ install -dm 1777 "$1/tmp"
 
 # Setup manpages directories.
 for d in 1 2 3 4 5 6 7 8; do
-    install -dm 755 "$1/usr/share/man/man$d"
+    install -dm 755 "$1/share/man/man$d"
 done
 
 # Add symlinks.
+rm -rf $1/usr
 ln -s bin "$1/sbin"
-ln -s / "$1/usr"
-ln -s bin     "$1/usr/sbin"
 ln -s lib "$1/lib64"
 
 # Setup /var.
@@ -36,10 +35,10 @@ ln -s ../run/lock "$1/var/lock"
 
 # Setup /usr/local (usually for any programs installed outside package manager).
 for d in bin etc games include lib man sbin share src; do
-    install -dm 755 "$1/usr/local/$d"
+    install -dm 755 "$1/local/$d"
 done
 
-ln -s ../man "$1/usr/local/share/man"
+ln -s ../man "$1/local/share/man"
 
 # /etc skeleton files.
 for f in fstab group host.conf hosts issue os-release \
