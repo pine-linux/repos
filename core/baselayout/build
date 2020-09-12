@@ -10,10 +10,6 @@ install -dm 555  "$1/sys"
 install -dm 0750 "$1/home/root"
 install -dm 1777 "$1/tmp"
 
-# Setup /usr hierarchy.
-for d in bin include lib share src; do
-    install -dm 755 "$1/usr/$d"
-done
 
 # Setup manpages directories.
 for d in 1 2 3 4 5 6 7 8; do
