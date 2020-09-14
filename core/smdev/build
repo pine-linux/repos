@@ -5,5 +5,5 @@ sed -i \
     -e "/^LDFLAGS/s/=/= $LDFLAGS/" \
     config.mk
 
-make ubase-box
-make DESTDIR="$1" PREFIX=/ ubase-box-install
+make
+make DESTDIR="$1" PREFIX=/ install
