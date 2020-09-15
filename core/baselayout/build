@@ -18,9 +18,9 @@ done
 
 # Add symlinks.
 rm -rf $1/usr
-ln -s ./  "$1/usr"
-ln -s bin "$1/sbin"
-ln -s lib "$1/lib64"
+ln -s /  "$1/usr"
+ln -s /bin "$1/sbin"
+ln -s /lib "$1/lib64"
 
 # Setup /var.
 for d in cache local opt log/old lib/misc empty service; do
