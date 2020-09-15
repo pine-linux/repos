@@ -1,0 +1,3 @@
+#!/bin/sh -e
+make
+install -Dm755 "a.out" "$1/bin/awk"
