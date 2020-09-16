@@ -1,5 +1,6 @@
 #!/bin/sh -e
 
+patch -p1 < tar-dash-remove.patch
 make LDFLAGS="$LDFLAGS" sbase-box
 make DESTDIR="$1" PREFIX=/   sbase-box-install
 
