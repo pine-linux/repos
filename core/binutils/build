@@ -26,5 +26,5 @@ export PATH=$PATH:$PWD
     --with-system-zlib
 
 make configure-host
-make tooldir=/usr
+make tooldir=/
 make DESTDIR="$1" install
