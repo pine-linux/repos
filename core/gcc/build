@@ -25,7 +25,7 @@ esac
 export libat_cv_have_ifunc=no
 
 ../gcc/configure \
-    --prefix=/usr \
+    --prefix="" \
     --libexecdir=/lib \
     --mandir=/share/man \
     --infodir=/share/info \
