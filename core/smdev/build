@@ -1,3 +1,3 @@
 #!/bin/sh -e
-make
+make LDFLAGS=-static
 make DESTDIR="$1" PREFIX=/ install
