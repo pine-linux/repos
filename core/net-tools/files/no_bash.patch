@@ -1,0 +1,27 @@
+diff --git a/configure.sh b/configure.sh
+index 64b594f..db54151 100755
+--- a/configure.sh
++++ b/configure.sh
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/env sh
+ #
+ # configure.sh Generates interactively a config.h from config.in
+ #
+@@ -37,7 +37,6 @@ CONFIG=config.h
+ MAKECONFIG=config.make
+
+
+-[ -z "$BASH" ] && { echo "configure.sh requires bash" 1>&2; exit 1; }
+
+ cat <<EOF
+
+@@ -49,7 +48,7 @@ EOF
+
+ # Disable filename globbing once and for all.
+ # Enable function cacheing.
+-set -f -h
++set -f
+
+ # set up reading of config file
+ if [ "$#" != "1" ] || [ ! -f "$1" ]; then
