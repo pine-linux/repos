@@ -1,3 +1,0 @@
-#!/bin/sh -e
-patch -p1 < no_bash.patch
-make
