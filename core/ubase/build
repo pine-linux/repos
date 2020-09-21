@@ -6,7 +6,7 @@ done
 
 sed -i \
     -e "/^CFLAGS/s/=/= $CFLAGS/" \
-    -e "/^LDFLAGS/s/=/= $LDFLAGS/" \
+    -e "/^LDFLAGS/s/=/= $LDFLAGS -static/" \
     config.mk
 
 make ubase-box
