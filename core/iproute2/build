@@ -10,7 +10,7 @@ sed -i 's/CC := gcc/CC ?= gcc/' Makefile
 ./configure
 
 make
-make DESTDIR="$1" PREFIX="/" DATADIR="/share/" LDDFLAGS="-static" SBINDIR="/bin" install
+make DESTDIR="$1" PREFIX="/" DATADIR="/share/" SBINDIR="/bin" install
 
 install -Dm0644 include/libnetlink.h "$1/include/libnetlink.h"
 install -Dm0644 lib/libnetlink.a "$1/lib/libnetlink.a"
