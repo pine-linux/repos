@@ -5,7 +5,7 @@ patch -p1 < 0001-make-iproute2-fhs-compliant.patch
 # Fix hardcoded `gcc` ( there is HOST_CC := $(CC) on line after this,
 # but upstream seems to use it inconsistently ). Otherwise build fails on
 # `clang` based systems with no `gcc` installed.
-sed -i 's/CC := gcc/CC ?= gcc/' Makefile
+# sed -i 's/CC := gcc/CC ?= gcc/' Makefile
 
 ./configure
 
