@@ -6,5 +6,6 @@ export CFLAGS="$CFLAGS"
     --prefix=/
 
 make DESTDIR="$1" install
+LDFLAGS="${LDFLAGS} -static"
 
 ln -s /bin/dash "$1/bin/sh"
