@@ -1,8 +1,13 @@
 #!/bin/sh -e
-
+LDFLAGS="-static" \
+CFLAGS="-static" \
 ./configure \
     --prefix=/ \
-    --disable-nls
+    --disable-nls \
+    --with-pic \
+    --enable-shared \
+    --enable-static
 
-make
-make DESTDIR="$1" install
+make 
+make DESTDIR="$1" CFLAGS="-static" install
+
