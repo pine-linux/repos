@@ -5,7 +5,7 @@ export CFLAGS="$CFLAGS"
 ./configure \
     --prefix=/
 
-make DESTDIR="$1" install
 LDFLAGS="${LDFLAGS} -static"
+make DESTDIR="$1" install
 
 ln -s /bin/dash "$1/bin/sh"

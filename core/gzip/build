@@ -1,6 +1,7 @@
 #!/bin/sh -e
 
-make CC="${CC:-cc} -static"
+LDFLAGS="${LDFLAGS} -static"
+make CC="${CC:-cc}"
 
 install -Dm755 pigz   "$1/bin/pigz"
 install -Dm755 unpigz "$1/bin/unpigz"
