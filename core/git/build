@@ -1,18 +1,13 @@
 #!/bin/sh -e
-
-
-        export CFLAGS="$CFLAGS $DEPS_CFLAGS"
-        export LDFLAGS="$LDFLAGS $DEPS_LDFLAGS"
-        CC=gcc
-        libressl_libdir="$KISS_ROOT/lib/"
-        AR=ar
-        # https://sourceware.org/bugzilla/show_bug.cgi?id=16698
-        test x"$arch" = x"arm" && export LDFLAGS="`printf "%s" \"$LDFLAGS\" | sed 's@-Wl,--gc-sections@@g'`"
-        # NOTE: "$PREFIX/" is needed to set the proper mandir.
-        make CURL_LIBCURL="${KISS_ROOT}/lib/libcurl.a ${libressl_libdir}/libssl.a ${libressl_libdir}/libcrypto.a" \
-        CC="$CC -static" \
-                AR="$AR" \
-                prefix="/" gitexecdir=/lib/git-core NO_REGEX=NeedsStartEnd\
-                NO_TCLTK=1 NO_PYTHON=1 NO_EXPAT=1 NO_GETTEXT=1 \
-                CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS -static" \
-                DESTDIR="$1"  V=1 all install
+export CFLAGS="$CFLAGS $DEPS_CFLAGS"
+export LDFLAGS="$LDFLAGS $DEPS_LDFLAGS"
+CC=gcc
+libressl_libdir="$KISS_ROOT/lib/"
+AR=ar
+make CURL_LIBCURL="${KISS_ROOT}/lib/libcurl.a ${libressl_libdir}/libssl.a ${libressl_libdir}/libcrypto.a" \
+   CC="$CC -static" \
+   AR="$AR" \
+   prefix="/" gitexecdir=/lib/git-core NO_REGEX=NeedsStartEnd\
+   NO_TCLTK=1 NO_PYTHON=1 NO_EXPAT=1 NO_GETTEXT=1 \
+   CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS -static" \
+   DESTDIR="$1"  V=1 all install
