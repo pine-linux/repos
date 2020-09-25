@@ -1,30 +1,18 @@
 #!/bin/sh -e
 
-export CFLAGS="$CFLAGS -static"
 
-patch -p1 < git-tiny.patch
-
-cat > config.mak <<EOF
-NO_GETTEXT=YesPlease
-NO_SVN_TESTS=YesPlease
-NO_TCLTK=YesPlease
-NO_EXPAT=YesPlease
-NO_NSEC=YesPlease
-NO_PYTHON=YesPlease
-NO_PERL=YesPlease
-NO_SVN_TESTS=YesPlease
-NO_SYS_POLL_H=1
-NO_CROSS_DIRECTORY_HARDLINKS=1
-NO_INSTALL_HARDLINKS=1
-EOF
-
-./configure \
-    --prefix=/ \
-    --libexecdir=/lib \
-    ac_cv_snprintf_returns_bogus=no \
-    ac_cv_fread_reads_directories=yes
-
-make
-make DESTDIR="$1" install
-
-cp -rf man "$1/share/man"
+        export CFLAGS="$CFLAGS $DEPS_CFLAGS"
+        export LDFLAGS="$LDFLAGS $DEPS_LDFLAGS"
+        CC=gcc
+        libressl_libdir="$KISS_ROOT/lib/"
+        AR=ar
+        # https://sourceware.org/bugzilla/show_bug.cgi?id=16698
+        test x"$arch" = x"arm" && export LDFLAGS="`printf "%s" \"$LDFLAGS\" | sed 's@-Wl,--gc-sections@@g'`"
+        # NOTE: "$PREFIX/" is needed to set the proper mandir.
+        make CURL_LIBCURL="${KISS_ROOT}/lib/libcurl.a ${libressl_libdir}/libssl.a ${libressl_libdir}/libcrypto.a" \
+        CC="$CC -static" \
+                AR="$AR" \
+                prefix="/" gitexecdir=/lib/git-core NO_REGEX=NeedsStartEnd\
+                NO_TCLTK=1 NO_PYTHON=1 NO_EXPAT=1 NO_GETTEXT=1 \
+                CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS -static" \
+                DESTDIR="$1"  V=1 all install
