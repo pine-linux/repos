@@ -1,6 +1,8 @@
 #!/bin/sh -e
 
-LDFLAGS="${LDFLAGS} -static"
+export LDFLAGS="${LDFLAGS} -static"
+export CFLAGS="${CFLAGS} -static"
+export CPPFLAGS="${CPPFLAGS} -static"
 make CC="${CC:-cc}"
 
 install -Dm755 pigz   "$1/bin/pigz"
