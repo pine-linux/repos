@@ -1,4 +1,5 @@
 #!/bin/sh -e
+./configure --help
 LDFLAGS="-static" \
 ./configure \
     -C \
@@ -9,5 +10,5 @@ LDFLAGS="-static" \
     --enable-static
 
 make 
-make DESTDIR="$1" CFLAGS="-static" install
+make DESTDIR="$1"  install
 
