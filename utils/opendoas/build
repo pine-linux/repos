@@ -3,6 +3,7 @@
 sed -i '/chown/d' bsd.prog.mk
 
 ./configure \
+    --prefix='/' \
     --enable-static \
     --with-shadow \
     --with-timestamp \
