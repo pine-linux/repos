@@ -1,0 +1,2 @@
+#!/bin/sh -e
+make LDFLAGS="${LDFLAGS}-static" DESTDIR="$1" PREFIX=/ all-static install-static

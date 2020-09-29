@@ -1,7 +1,9 @@
 #!/bin/sh -e
 
+export LDFLAGS="$LDFLAGS -static"
+export LIBS="-lcurses -lterminfo"
 ./configure \
-    --prefix=/usr \
+    --prefix=/ \
     --enable-cscope \
     --enable-multibyte \
     --with-ex-name=vim-ex \
@@ -16,6 +18,5 @@
     --disable-gui \
     --disable-nls \
     --without-x
-
 make
 make DESTDIR="$1" install
