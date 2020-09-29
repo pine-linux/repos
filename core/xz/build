@@ -1,14 +1,15 @@
 #!/bin/sh -e
+printf "all:\n\ttrue\n\ninstall:\n\ttrue\n\n" > tests/Makefile.in
 ./configure --help
-LDFLAGS="-static" \
 ./configure \
-    -C \
     --prefix=/ \
     --disable-nls \
     --with-pic \
     --enable-shared \
-    --enable-static
+    --enable-static \
+LDFLAGS="${LDFLAGS} -static"
 
-make 
+
+make
 make DESTDIR="$1"  install
 
