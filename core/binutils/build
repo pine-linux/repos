@@ -8,9 +8,9 @@ EOF
 chmod +x makeinfo
 export PATH=$PATH:$PWD
 
-LDFLAGS="$LDFLAGS -static" CFLAGS="$CFLAGS -static" ./configure \
+LDFLAGS="$LDFLAGS -static" CC="${CC-"cc"} -static" ./configure \
     --prefix=/ \
-    --with-lib-path=/usr/lib:/usr/local/lib \
+    --with-lib-path=/lib:/local/lib \
     --enable-targets=x86_64-pep \
     --enable-gold \
     --enable-lto \

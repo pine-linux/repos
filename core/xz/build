@@ -7,8 +7,8 @@ printf "all:\n\ttrue\n\ninstall:\n\ttrue\n\n" > tests/Makefile.in
     --with-pic \
     --enable-shared \
     --enable-static \
-LDFLAGS="${LDFLAGS} -static"
-
+LDFLAGS="${LDFLAGS} -static" \
+CPPFLAGS="-static"
 
 make
 make DESTDIR="$1"  install
