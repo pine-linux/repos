@@ -8,7 +8,7 @@ EOF
 chmod +x makeinfo
 export PATH=$PATH:$PWD
 
-LDFLAGS="$LDFLAGS -static" CC="${CC-"cc"} -static" ./configure \
+LDFLAGS="$LDFLAGS -Wl,-static" CC="${CC-"cc"} -static" ./configure \
     --prefix=/ \
     --with-lib-path=/lib:/local/lib \
     --enable-targets=x86_64-pep \
