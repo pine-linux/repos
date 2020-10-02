@@ -19,11 +19,16 @@ IFS=. read -r gcc_version _ 2>/dev/null \
 # Skip the bootstrap process if we are able.
 case $2 in "$gcc_version"*)
     printf '%s\n' "Minor version difference, disabling bootstrap."
-    bootstrap=--disable-bootstrap
+#    bootstrap=--disable-bootstrap
 esac
 
 export libat_cv_have_ifunc=no
-
+CFLAGS="-Os -g0" \
+CXXFLAGS="-Os -g0" \
+CC="${CC-"cc"} -static" \
+LDFLAGS="-s -Wl,--no-keep-memory" \
+CFLAGS_FOR_TARGET="-Os -g0 $config_arch_target_cflags" \
+LDFLAGS_FOR_TARGET="-s $config_arch_target_ldflags" \
 ../gcc/configure \
     --prefix="" \
     --libexecdir=/lib \
